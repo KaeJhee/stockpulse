@@ -1,0 +1,54 @@
+name: Deploy to Vercel
+
+# Triggers:
+#   - Every push to the main branch (automatic deploy)
+#   - You can also trigger manually from GitHub → Actions → "Run workflow"
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Write API keys into .env.production so Vite picks them up at build time
+      #    regardless of how vercel build wraps the process
+      - name: Inject API keys
+        run: |
+          echo "VITE_FINNHUB_KEY=${{ secrets.VITE_FINNHUB_KEY }}" >> .env.production
+          echo "VITE_POLYGON_KEY=${{ secrets.VITE_POLYGON_KEY }}" >> .env.production
+
+      # 5. Install Vercel CLI
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      # 6. Pull Vercel project settings (links to your project)
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      # 7. Build using vercel build — output lands in .vercel/output (required for --prebuilt)
+      - name: Build project
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      # 8. Deploy the prebuilt .vercel/output to production
+      - name: Deploy to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
