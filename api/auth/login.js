@@ -10,5 +10,5 @@ export default function handler(req, res) {
     redirect_uri:  process.env.SCHWAB_REDIRECT_URI,
     scope:         "readonly",
   });
-  res.redirect(302, `https://api.schwabapi.com/oauth/authorize?${params}`);
+  res.redirect(302, `https://api.schwabapi.com/v1/oauth/authorize?${params}`);
 }
