@@ -205,46 +205,6 @@ Click **⚙ Settings** in the top nav bar. The built-in Finnhub and Polygon keys
 
 ---
 
-## Deploy to Vercel
-
-See `DEPLOY_FROM_SCRATCH.md` for the full step-by-step guide.
-
-**Summary:**
-1. Navigate to the project folder and run `npm install`
-2. Push to GitHub (see `GITHUB_PUSH_INSTRUCTIONS.md`)
-3. Import the repo in Vercel → it auto-deploys
-4. Open your live URL (https://stockpulse-theta-nine.vercel.app/) → click **⚙ Settings** → enter API keys → **Save & Close**
-5. Done — no Vercel environment variables are needed for FMP, Finnhub, Polygon, or Marketaux
-
-> Schwab integration requires Vercel environment variables (`SCHWAB_CLIENT_ID`, `SCHWAB_CLIENT_SECRET`, `SCHWAB_REDIRECT_URI`). See `DEPLOY_FROM_SCRATCH.md` for setup.
-
----
-
-## Schwab Integration (Optional)
-
-Schwab provides true real-time quotes and analyst price targets. Requires a Vercel deployment (not available locally).
-
-### Setup
-1. Register at [developer.schwab.com](https://developer.schwab.com) and create an app
-2. In Vercel → your project → **Settings** → **Environment Variables**, add:
-
-| Variable | Where to find it |
-|---|---|
-| `SCHWAB_CLIENT_ID` | developer.schwab.com → Your App → "App Key" |
-| `SCHWAB_CLIENT_SECRET` | developer.schwab.com → Your App → "App Secret" |
-| `SCHWAB_REDIRECT_URI` | `https://stockpulse-theta-nine.vercel.app/api/auth/callback` |
-
-3. Add the same redirect URI in your Schwab Developer Portal app settings
-4. Redeploy → click **Connect Schwab** in the nav bar → log in
-
-### Token lifecycle
-| Token | Expires | Behavior |
-|---|---|---|
-| Access token | 30 min | Auto-refreshed silently |
-| Refresh token | 7 days | Click "Connect Schwab" again to re-authenticate |
-
----
-
 ## Project Structure
 
 ```
