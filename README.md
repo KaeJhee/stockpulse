@@ -68,8 +68,8 @@ Keys live in **your browser's localStorage only**. They are never committed to c
 
 | API | Purpose | Free Tier | Default Key Built-in? | Sign Up |
 |---|---|---|---|---|
-| **Finnhub** | Real-time quotes, earnings, news, analyst consensus | 60 calls/min | ✅ Yes | https://finnhub.io/register |
-| **Polygon** | Price chart (OHLCV), RSI/SMA/BB/MACD calculations, prev-day data, indices | Unlimited delayed bars | ✅ Yes | https://polygon.io/dashboard/signup |
+| **Finnhub** | Real-time quotes, earnings, news, analyst consensus | 60 calls/min | ❌ Enter your own | https://finnhub.io/register |
+| **Polygon** | Price chart (OHLCV), RSI/SMA/BB/MACD calculations, prev-day data, indices | Unlimited delayed bars | ❌ Enter your own | https://polygon.io/dashboard/signup |
 | **FMP** | Fundamentals, batch quotes for indices/movers/sectors, VIX | 250 req/day (free); paid recommended | ❌ Enter your own | https://site.financialmodelingprep.com/register |
 | **Marketaux** | Stock news with sentiment scores | 100 req/day (free) | ❌ Enter your own | https://www.marketaux.com/register |
 | **Alpha Vantage** | Kept in Settings for future use — **not used for any indicators** | — | ❌ Not needed | https://www.alphavantage.co/support/#api-key |
