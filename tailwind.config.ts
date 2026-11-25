@@ -6,9 +6,11 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem", /* 9px */
-        md: ".375rem", /* 6px */
-        sm: ".1875rem", /* 3px */
+        /* Ghost HUD: square panels */
+        xl: "4px",
+        lg: "3px",
+        md: "2px",
+        sm: "1px",
       },
       colors: {
         // Flat / base colors (regular buttons)
@@ -75,6 +77,14 @@ export default {
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
           border: "var(--sidebar-accent-border)"
         },
+        /* Ghost signal colors */
+        up: "hsl(var(--up) / <alpha-value>)",
+        down: "hsl(var(--down) / <alpha-value>)",
+        amber: "hsl(var(--amber) / <alpha-value>)",
+        hit: "hsl(var(--hit) / <alpha-value>)",
+        magenta: "hsl(var(--magenta) / <alpha-value>)",
+        violet: "hsl(var(--violet) / <alpha-value>)",
+        dim: "hsl(var(--dim) / <alpha-value>)",
         status: {
           online: "rgb(34 197 94)",
           away: "rgb(245 158 11)",
@@ -86,8 +96,28 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        read: ["var(--font-read)"],
       },
       keyframes: {
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(8px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "1", filter: "brightness(1)" },
+          "50%": { opacity: ".75", filter: "brightness(1.35)" },
+        },
+        "scan-x": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(100%)" },
+        },
+        "ring-expand": {
+          from: { transform: "scale(.6)", opacity: "1" },
+          to: { transform: "scale(1.6)", opacity: "0" },
+        },
+        "spin-slow": {
+          to: { transform: "rotate(360deg)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -98,6 +128,11 @@ export default {
         },
       },
       animation: {
+        "fade-up": "fade-up .45s cubic-bezier(.2,.8,.2,1) both",
+        "glow-pulse": "glow-pulse 2.4s ease-in-out infinite",
+        "scan-x": "scan-x 2.2s cubic-bezier(.4,0,.2,1) infinite",
+        "ring-expand": "ring-expand 1.2s ease-out infinite",
+        "spin-slow": "spin-slow 8s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

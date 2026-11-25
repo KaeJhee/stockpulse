@@ -129,7 +129,7 @@ The top nav bar shows a live status dot next to the settings button:
 - 🟢 Green — all active APIs responding
 - 🔴 Red — one or more APIs returning errors
 
-Hover the dot to see per-API latency, last-success timestamp, and specific error messages. Finnhub and Polygon always check (they have built-in default keys). FMP and Marketaux only check when you've entered a key — otherwise they show "Add key in Settings" in gray. Refreshes every 60 seconds with a "Refresh now" link.
+Hover the dot to see per-API latency, last-success timestamp, and specific error messages. Finnhub and Polygon always check (they have built-in default keys). FMP and Marketaux only check when you've entered a key — otherwise they show "Add key in Settings" in gray. Refreshes every 60 seconds with a "Refresh now" link. Alpha Vantage is the exception: its free tier is 25 calls/day, so it is checked at most every 6 hours (result cached in `localStorage` under `ghost.health.av`) unless you press "Refresh now".
 
 ---
 
